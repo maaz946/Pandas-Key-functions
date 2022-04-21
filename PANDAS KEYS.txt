@@ -1,0 +1,58 @@
+PANDAS KEYS
+
+drt.info()
+drt.describe()
+.isnull()
+.column()
+.mean()
+.std()  standard daviation
+.var()  varience
+.sum()
+
+# drt[drt.duplicated()]                 # to find the duplicated values
+# data.drop_duplicates(inplace=True) # to delete all duplicated values
+# drt.isnull().sum()
+
+# to find the data from one column
+# match[match['player_of_match'].isin(['BB McCullum'])]
+# drt[drt['title'].str.contains('House of Cards')]
+for finding years of ralease date
+
+# drt['Date_N']=pd.to_datetime(drt[''])         to convert string date into countable date
+# dt.year.value_counts()          
+              # to count only year from the complete date  
+# ( normalize=True ) for % count put in value count bracket
+# group by
+# drt.dropna()                    use to drop rows where null is present
+# nunique()                       to count all unique values in a spacific column
+# unique()                        to find name of all unique values
+# str.split(" ", expand=True)     to split a single column into two or three column using separator
+# drt['Minutes'] = pd.to_numeric(drt['Minutes'],errors = 'coerce')   
+                                # to convert object to float
+# drt.sort_values(by='release_year',ascending=False).head(2)
+                                # to sort data with respect to one column
+ for creating new column
+pk["Attack High-low"]=pk["Attack"].apply(set_attack)  
+                                                       set_attack is a function
+# DataSetName["medv"].value_counts()
+
+# df.filna(0) to replace nan with 0
+# df.drop(' ',' ') in bracket name of the column to delete
+
+# df.rename(columns={'ad_id':'IDS','interent2':'inter1'},inplace=True)
+                                             # to change the name of column
+
+
+pd.get_dummies(df['Medal'])
+    / if there is one column and there are three or four value init 
+      this method will separate  them and mark 1 if true and 0 if false
+
+df=pd.concat([df,pd.get_dummies(df['Medal'])],axis=1)
+     / to concate or add above column created column in currently using
+       dataset
+
+nations_overtime=df.drop_duplicates(['Year','region'])['Year'].value_counts().reset_index().sort_values('index')
+
+print df.groupby(['Team','Year']).groups
+print grouped.get_group(2014)
+print grouped['Points'].agg(np.mean)
