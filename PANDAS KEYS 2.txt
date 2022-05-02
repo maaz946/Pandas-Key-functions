@@ -1,0 +1,109 @@
+PANDAS KEYS
+
+drt.info()
+drt.describe()
+.isnull()
+.column()
+.mean()
+.std()  standard daviation
+.var()  varience
+.sum()
+
+# drt[drt.duplicated()]                 # to find the duplicated values
+# data.drop_duplicates(inplace=True) # to delete all duplicated values
+# drt.isnull().sum()
+
+# to find the data from one column
+# match[match['player_of_match'].isin(['BB McCullum'])]
+# drt[drt['title'].str.contains('House of Cards')]
+for finding years of ralease date
+
+# drt['Date_N']=pd.to_datetime(drt[''])         to convert string date into countable date
+# dt.year.value_counts()          
+              # to count only year from the complete date  
+# ( normalize=True ) for % count put in value count bracket
+# group by
+# drt.dropna()                    use to drop rows where null is present
+# str.split(" ", expand=True)     to split a single column into two or three column using separator
+
+# drt['Minutes'] = pd.to_numeric(drt['Minutes'],errors = 'coerce')   
+                                # to convert object to float
+# drt.sort_values(by='release_year',ascending=False).head(2)
+                                # to sort data with respect to one column
+ 
+# DataSetName["medv"].value_counts()
+
+# df.filna(0) to replace nan with 0
+# df.drop(' ',' ') in bracket name of the column to delete
+
+pd.get_dummies(df['Medal'])
+    / if there is one column and there are three or four value init 
+      this method will separate  them and mark 1 if true and 0 if false
+
+df=pd.concat([df,pd.get_dummies(df['Medal'])],axis=1)
+     / to concate or add above column created column in currently using
+       dataset
+nations_overtime=df.drop_duplicates(['Year','region'])['Year'].value_counts().reset_index().sort_values('index')
+
+
+# df.rename(columns={'ad_id':'IDS','interent2':'inter1'},inplace=True)
+                                             # to change the name of column
+for creating new column
+pk["Attack High-low"]=pk["Attack"].apply(set_attack)  
+                                                       set_attack is a function
+
+# nunique()                       to count all unique values in a spacific column
+# unique()                        to find name of all unique values
+
+print df.groupby(['Team','Year']).groups
+print grouped.get_group(2014)
+print grouped['Points'].agg(np.mean)
+loc
+iloc
+
+for missing values
+
+# to take care missing attributes
+#   1. get rid of missing data point
+#   2. get rid of whole attribute
+#   3. set the value to some value (0, mean 0r medium)
+
+STEPS 
+
+# 1
+# boston.dropna(subset=['rm'],inplace=True)
+
+#2
+# boston.drop('rm',axis=1)
+
+#3
+#median=boston['rm'].median()
+#boston.fillna(median) #if want to fill with median value
+
+
+# for fillna in all data from median use below method
+
+from sklearn.impute import SimpleImputer
+imputer=SimpleImputer(strategy='median')
+imputer.fit(boston)
+imputer.statistics_
+x=imputer.transform(boston)
+boston_tr=pd.DataFrame(x,columns=boston.columns)
+
+
+1) set_index()
+        df.set_index('Attack')
+2) Query
+      df.query('45<attack<50')
+3) select_dtypes()
+           df.select_dtypes(include=[np.number]or 'object')
+4)  qcut()  and   cut()
+      df['qcut']=pd.qcut(df['driver_age'],q=5)
+      df['cut']=[pd.cut(df['driver_ age'],bins=3,labels=['1-21','22-60','61-100'])
+
+from pandas.plotting import scatter_matrix
+
+# for corr relation graph
+atribites=['medv','rm','zn','lstat']
+scatter_matrix(boston[atribites],figsize=(12,8))
+boston.hist(bins=50,figsize=(20,15))
